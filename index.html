@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -93,49 +93,51 @@ body {
 .header-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); animation: pulse-dot 2s ease-in-out infinite; }
 @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
 
-/* === STEP INDICATOR === */
-.step-bar {
+/* === APP MENU === */
+.app-menu {
   max-width: 1280px; margin: 0 auto;
-  padding: 24px 24px 8px;
+  padding: 18px 24px 0;
   position: relative; z-index: 10;
 }
-.steps {
-  display: flex; align-items: center; justify-content: center; gap: 0;
-  flex-wrap: wrap;
+.menu-shell {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 12px; border-radius: 24px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  backdrop-filter: blur(22px) saturate(1.4);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
 }
-.step-item {
-  display: flex; align-items: center; gap: 0; cursor: pointer;
-  transition: var(--transition);
+.menu-tabs {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
 }
-.step-circle {
-  width: 38px; height: 38px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 0.85rem;
-  background: var(--surface); border: 2px solid var(--surface-light);
-  color: var(--text-dim); transition: var(--transition);
-  flex-shrink: 0;
+.menu-tab {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 14px; border-radius: 14px;
+  border: 1px solid transparent;
+  background: transparent; color: var(--text-muted);
+  font: inherit; font-size: 0.88rem; font-weight: 600;
+  cursor: pointer; transition: var(--transition);
 }
-.step-item.active .step-circle {
-  background: linear-gradient(135deg, var(--primary), var(--cyan));
-  border-color: transparent; color: #fff;
-  box-shadow: 0 0 20px rgba(99,102,241,0.4);
+.menu-tab:hover {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--text);
 }
-.step-item.completed .step-circle {
-  background: var(--success); border-color: transparent; color: #fff;
+.menu-tab.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.18));
+  color: #fff;
+  border-color: rgba(99, 102, 241, 0.28);
+  box-shadow: 0 10px 24px rgba(99, 102, 241, 0.14);
 }
-.step-label {
-  font-size: 0.72rem; font-weight: 500; color: var(--text-dim);
-  margin-left: 8px; white-space: nowrap; transition: var(--transition);
-  display: none;
+.menu-meta {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
 }
-.step-item.active .step-label { color: var(--text); display: block; }
-@media(min-width:768px) { .step-label { display: block; } }
-.step-line {
-  width: 40px; height: 2px; background: var(--surface-light); margin: 0 4px; flex-shrink: 0;
-  transition: var(--transition);
+.menu-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 99px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted); font-size: 0.78rem; font-weight: 600;
 }
-.step-line.filled { background: linear-gradient(90deg, var(--success), var(--primary)); }
-@media(min-width:900px) { .step-line { width: 64px; } }
 
 /* === MAIN CONTAINER === */
 .main {
@@ -665,7 +667,8 @@ body {
   .cards-grid { grid-template-columns: 1fr; }
   .stream-container { grid-template-columns: 1fr; }
   .chat-panel { min-height: 400px; }
-  .nav-bar { flex-direction: column; gap: 12px; }
+  .menu-shell { flex-direction: column; align-items: stretch; }
+  .menu-meta { justify-content: space-between; }
 }
 
 /* Waveform animation */
@@ -710,37 +713,25 @@ body {
     </a>
     <div class="header-badge">
       <div class="dot"></div>
-      3 sesiones en directo
+      Demo lista para presentar
     </div>
   </div>
 </header>
 
-<!-- STEP BAR -->
-<div class="step-bar">
-  <div class="steps">
-    <div class="step-item active" onclick="goToScreen(1)">
-      <div class="step-circle">1</div>
-      <span class="step-label">Publicar Sesión</span>
+<!-- APP MENU -->
+<div class="app-menu">
+  <div class="menu-shell glass">
+    <div class="menu-tabs">
+      <button class="menu-tab active" data-screen="1" onclick="goToScreen(1)">Inicio</button>
+      <button class="menu-tab" data-screen="2" onclick="goToScreen(2)">Sesiones</button>
+      <button class="menu-tab" data-screen="3" onclick="goToScreen(3)">En vivo</button>
+      <button class="menu-tab" data-screen="4" onclick="goToScreen(4)">Q&A</button>
+      <button class="menu-tab" data-screen="5" onclick="goToScreen(5)">Grabaciones</button>
+      <button class="menu-tab" data-screen="6" onclick="goToScreen(6)">Perfil</button>
     </div>
-    <div class="step-line" id="line-1"></div>
-    <div class="step-item" onclick="goToScreen(2)">
-      <div class="step-circle">2</div>
-      <span class="step-label">Inscribirse</span>
-    </div>
-    <div class="step-line" id="line-2"></div>
-    <div class="step-item" onclick="goToScreen(3)">
-      <div class="step-circle">3</div>
-      <span class="step-label">Unirse al Directo</span>
-    </div>
-    <div class="step-line" id="line-3"></div>
-    <div class="step-item" onclick="goToScreen(4)">
-      <div class="step-circle">4</div>
-      <span class="step-label">Participar en Q&A</span>
-    </div>
-    <div class="step-line" id="line-4"></div>
-    <div class="step-item" onclick="goToScreen(5)">
-      <div class="step-circle">5</div>
-      <span class="step-label">Grabación</span>
+    <div class="menu-meta">
+      <div class="menu-pill">Mock interactivo</div>
+      <div class="menu-pill">Modo demo</div>
     </div>
   </div>
 </div>
@@ -752,8 +743,8 @@ body {
   <section class="screen active" id="screen-1">
     <div class="section-header">
       <div class="view-badge badge-mentor"><svg class="icon-svg icon-svg-inline" viewBox="0 0 24 24"><path d="M2 3h20v14H2zM8 21h8M12 17v4"/></svg>Vista Mentor</div>
-      <h2>Publicar Nueva Sesión</h2>
-      <p>Crea una sesión en directo para compartir tu conocimiento con la comunidad.</p>
+      <h2>Panel de Inicio</h2>
+      <p>Un punto de entrada para la demo con acceso rápido a la publicación, métricas y estados del producto.</p>
     </div>
     <div class="glass" style="padding:32px; position:relative;">
       <div class="form-grid">
@@ -810,18 +801,14 @@ body {
         <p style="color:var(--text-muted);font-size:0.9rem;">Los estudiantes ya pueden inscribirse.</p>
       </div>
     </div>
-    <div class="nav-bar">
-      <div></div>
-      <button class="btn btn-primary" onclick="goToScreen(2)">Siguiente →</button>
-    </div>
   </section>
 
   <!-- ==================== SCREEN 2: INSCRIBIRSE ==================== -->
   <section class="screen" id="screen-2">
     <div class="section-header">
       <div class="view-badge badge-student"><svg class="icon-svg icon-svg-inline" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5"/></svg>Vista Estudiante</div>
-      <h2>Próximas Sesiones en Directo</h2>
-      <p>Explora y apúntate a las sesiones que más te interesen.</p>
+      <h2>Sesiones Disponibles</h2>
+      <p>Explora la agenda, abre detalles de cada sesión y simula una inscripción sin salir de la demo.</p>
     </div>
     <div class="cards-grid">
       <!-- Card 1 -->
@@ -939,10 +926,6 @@ body {
         </div>
       </div>
     </div>
-    <div class="nav-bar">
-      <button class="btn btn-outline" onclick="goToScreen(1)">← Anterior</button>
-      <button class="btn btn-primary" onclick="goToScreen(3)">Siguiente →</button>
-    </div>
   </section>
 
   <!-- MODAL DETALLE -->
@@ -957,8 +940,8 @@ body {
   <section class="screen" id="screen-3">
     <div class="section-header">
       <div class="view-badge badge-student"><svg class="icon-svg icon-svg-inline" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5"/></svg>Vista Estudiante</div>
-      <h2>Unirse al Directo</h2>
-      <p>La sesión está a punto de comenzar. ¡Prepárate!</p>
+      <h2>Sala en Vivo</h2>
+      <p>Simulación del acceso a una transmisión en directo con estado de conexión y llamada a la acción.</p>
     </div>
     <div class="glass" style="overflow:hidden;" id="join-container">
       <div class="video-area" id="pre-join-video" style="aspect-ratio:21/9; min-height: 420px;">
@@ -1015,18 +998,14 @@ body {
         </div>
       </div>
     </div>
-    <div class="nav-bar">
-      <button class="btn btn-outline" onclick="goToScreen(2)">← Anterior</button>
-      <button class="btn btn-primary" onclick="goToScreen(4)">Siguiente →</button>
-    </div>
   </section>
 
   <!-- ==================== SCREEN 4: Q&A ==================== -->
   <section class="screen" id="screen-4">
     <div class="section-header">
       <div class="view-badge badge-student"><svg class="icon-svg icon-svg-inline" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5"/></svg>Vista Estudiante</div>
-      <h2>Sesión en Directo — Q&A</h2>
-      <p>Participa, pregunta y aprende en tiempo real.</p>
+      <h2>Q&A en Directo</h2>
+      <p>Un chat de preguntas y respuestas para demostrar la experiencia de interacción dentro del mock.</p>
     </div>
     <div class="stream-container">
       <!-- VIDEO -->
@@ -1143,10 +1122,6 @@ body {
         </div>
       </div>
     </div>
-    <div class="nav-bar">
-      <button class="btn btn-outline" onclick="goToScreen(3)">← Anterior</button>
-      <button class="btn btn-primary" onclick="goToScreen(5)">Siguiente →</button>
-    </div>
   </section>
 
   <!-- ==================== SCREEN 5: GRABACIONES ==================== -->
@@ -1154,7 +1129,7 @@ body {
     <div class="section-header">
       <div class="view-badge badge-student"><svg class="icon-svg icon-svg-inline" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5"/></svg>Vista Estudiante</div>
       <h2>Biblioteca de Grabaciones</h2>
-      <p>Revisa las sesiones pasadas a tu propio ritmo.</p>
+      <p>Revisa sesiones previas, reanuda el contenido y muestra el estado de avance de cada grabación.</p>
     </div>
 
     <!-- Player (hidden by default) -->
@@ -1298,9 +1273,93 @@ body {
         </div>
       </div>
     </div>
-    <div class="nav-bar">
-      <button class="btn btn-outline" onclick="goToScreen(4)">← Anterior</button>
-      <div></div>
+  </section>
+
+  <!-- ==================== SCREEN 6: PERFIL ==================== -->
+  <section class="screen" id="screen-6">
+    <div class="section-header">
+      <div class="view-badge badge-mentor"><svg class="icon-svg icon-svg-inline" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Perfil</div>
+      <h2>Perfil de Usuario</h2>
+      <p>Vista mock para una demo: identidad, métricas rápidas, preferencias y datos editables de presentación.</p>
+    </div>
+    <div class="stream-container">
+      <div class="glass" style="padding:28px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+          <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
+            <div class="avatar gradient-1" style="width:88px;height:88px;font-size:1.8rem;box-shadow:0 18px 30px rgba(99,102,241,0.18);">AG</div>
+            <div>
+              <div class="view-badge badge-mentor" style="margin-bottom:10px;">Cuenta demo</div>
+              <h3 style="font-size:1.4rem;font-weight:800;margin-bottom:6px;">Alejandro Gómez</h3>
+              <p style="color:var(--text-muted);max-width:560px;">Tech Lead enfocado en productos educativos. Este perfil está preparado para una prueba visual con campos editables y métricas ficticias.</p>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-sm">Editar perfil</button>
+        </div>
+
+        <div class="cards-grid" style="margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));">
+          <div class="glass" style="padding:18px;">
+            <div style="font-size:0.8rem;color:var(--text-dim);margin-bottom:6px;">Sesiones creadas</div>
+            <div style="font-size:1.6rem;font-weight:800;">24</div>
+          </div>
+          <div class="glass" style="padding:18px;">
+            <div style="font-size:0.8rem;color:var(--text-dim);margin-bottom:6px;">Asistencias</div>
+            <div style="font-size:1.6rem;font-weight:800;">138</div>
+          </div>
+          <div class="glass" style="padding:18px;">
+            <div style="font-size:0.8rem;color:var(--text-dim);margin-bottom:6px;">Valoración</div>
+            <div style="font-size:1.6rem;font-weight:800;">4.9/5</div>
+          </div>
+          <div class="glass" style="padding:18px;">
+            <div style="font-size:0.8rem;color:var(--text-dim);margin-bottom:6px;">Estado</div>
+            <div style="font-size:1rem;font-weight:700;color:var(--success);">Disponible para demo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass" style="padding:24px; display:flex; flex-direction:column; gap:18px;">
+        <div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:10px;">Datos de perfil</h3>
+          <div class="form-grid" style="grid-template-columns:1fr; gap:14px;">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" value="Alejandro Gómez">
+            </div>
+            <div class="form-group">
+              <label>Correo</label>
+              <input type="email" value="alejandro@demo-portal.academy">
+            </div>
+            <div class="form-group">
+              <label>Rol</label>
+              <select>
+                <option>Estudiante</option>
+                <option selected>Mentor</option>
+                <option>Administrador</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Biografía corta</label>
+              <textarea>Construyo experiencias digitales para educación y formación interna. Esta sección funciona como mock para validar el layout del perfil.</textarea>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:1rem;font-weight:700;margin-bottom:10px;">Preferencias</h3>
+          <div style="display:grid;gap:10px;">
+            <div class="glass" style="padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;">
+              <span>Notificaciones por email</span>
+              <span style="color:var(--success);font-weight:700;">Activas</span>
+            </div>
+            <div class="glass" style="padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;">
+              <span>Recordatorios antes de la sesión</span>
+              <span style="color:var(--success);font-weight:700;">Activos</span>
+            </div>
+            <div class="glass" style="padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;">
+              <span>Modo presentación</span>
+              <span style="color:var(--primary-light);font-weight:700;">Habilitado</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1315,35 +1374,23 @@ body {
 <script>
 // ==================== NAVIGATION ====================
 let currentScreen = 1;
-const totalScreens = 5;
+const totalScreens = 6;
 
 function goToScreen(n) {
   if (n < 1 || n > totalScreens) return;
-  // Hide current
   document.getElementById('screen-' + currentScreen).classList.remove('active');
-  // Show target
   currentScreen = n;
   const target = document.getElementById('screen-' + n);
   target.classList.remove('active');
-  // Force reflow for animation
   void target.offsetWidth;
   target.classList.add('active');
-  updateSteps();
+  updateMenu();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function updateSteps() {
-  const items = document.querySelectorAll('.step-item');
-  const lines = document.querySelectorAll('.step-line');
-  items.forEach((item, i) => {
-    const stepNum = i + 1;
-    item.classList.remove('active', 'completed');
-    if (stepNum === currentScreen) item.classList.add('active');
-    else if (stepNum < currentScreen) item.classList.add('completed');
-  });
-  lines.forEach((line, i) => {
-    if (i + 1 < currentScreen) line.classList.add('filled');
-    else line.classList.remove('filled');
+function updateMenu() {
+  document.querySelectorAll('.menu-tab').forEach((tab) => {
+    tab.classList.toggle('active', Number(tab.dataset.screen) === currentScreen);
   });
 }
 
@@ -1538,7 +1585,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Initialize
-updateSteps();
+updateMenu();
 </script>
 </body>
 </html>
