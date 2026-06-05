@@ -727,8 +727,6 @@ body {
       <button class="menu-tab" data-screen="6" onclick="goToScreen(6)">Perfil</button>
     </div>
     <div class="menu-meta">
-      <div class="menu-pill">Mock interactivo</div>
-      <div class="menu-pill">Modo demo</div>
     </div>
   </div>
 </div>
@@ -741,7 +739,7 @@ body {
     <div class="section-header">
       <div class="view-badge badge-mentor"><svg class="icon-svg icon-svg-inline" viewBox="0 0 24 24"><path d="M2 3h20v14H2zM8 21h8M12 17v4"/></svg>Vista Mentor</div>
       <h2>Panel de Inicio</h2>
-      <p>Un punto de entrada para la demo con acceso rápido a la publicación, métricas y estados del producto.</p>
+      <p>Un punto de entrada con acceso rápido a la publicación, métricas y estados del producto.</p>
     </div>
     <div class="glass" style="padding:32px; position:relative;">
       <div class="form-grid">
@@ -805,7 +803,7 @@ body {
     <div class="section-header">
       <div class="view-badge badge-student"><svg class="icon-svg icon-svg-inline" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5"/></svg>Vista Estudiante</div>
       <h2>Sesiones Disponibles</h2>
-      <p>Explora la agenda, abre detalles de cada sesión y simula una inscripción sin salir de la demo.</p>
+      <p>Explora la agenda, abre detalles de cada sesión y simula una inscripción de la web.</p>
     </div>
     <div class="cards-grid">
       <!-- Card 1 -->
@@ -1002,7 +1000,7 @@ body {
     <div class="section-header">
       <div class="view-badge badge-student"><svg class="icon-svg icon-svg-inline" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c0 2 2.5 3 6 3s6-1 6-3v-5"/></svg>Vista Estudiante</div>
       <h2>Q&A en Directo</h2>
-      <p>Un chat de preguntas y respuestas para demostrar la experiencia de interacción dentro del mock.</p>
+      <p>Un chat de preguntas y respuestas para demostrar la experiencia de interacción.</p>
     </div>
     <div class="stream-container">
       <!-- VIDEO -->
@@ -1277,7 +1275,6 @@ body {
     <div class="section-header">
       <div class="view-badge badge-mentor"><svg class="icon-svg icon-svg-inline" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Perfil</div>
       <h2>Perfil de Usuario</h2>
-      <p>Vista mock para una demo: identidad, métricas rápidas, preferencias y datos editables de presentación.</p>
     </div>
     <div class="stream-container">
       <div class="glass" style="padding:28px;">
@@ -1285,8 +1282,7 @@ body {
           <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
             <div class="avatar gradient-1" style="width:88px;height:88px;font-size:1.8rem;box-shadow:0 18px 30px rgba(99,102,241,0.18);">AG</div>
             <div>
-              <div class="view-badge badge-mentor" style="margin-bottom:10px;">Cuenta demo</div>
-              <h3 style="font-size:1.4rem;font-weight:800;margin-bottom:6px;">Alejandro Gómez</h3>
+              <h3 style="font-size:1.4rem;font-weight:800;margin-bottom:6px;">María García</h3>
               <p style="color:var(--text-muted);max-width:560px;">Tech Lead enfocado en productos educativos. Este perfil está preparado para una prueba visual con campos editables y métricas ficticias.</p>
             </div>
           </div>
@@ -1308,7 +1304,6 @@ body {
           </div>
           <div class="glass" style="padding:18px;">
             <div style="font-size:0.8rem;color:var(--text-dim);margin-bottom:6px;">Estado</div>
-            <div style="font-size:1rem;font-weight:700;color:var(--success);">Disponible para demo</div>
           </div>
         </div>
       </div>
@@ -1319,11 +1314,11 @@ body {
           <div class="form-grid" style="grid-template-columns:1fr; gap:14px;">
             <div class="form-group">
               <label>Nombre</label>
-              <input type="text" value="Alejandro Gómez">
+              <input type="text" value="Maria Garcia">
             </div>
             <div class="form-group">
               <label>Correo</label>
-              <input type="email" value="alejandro@demo-portal.academy">
+              <input type="email" value="maria@demo-portal.academy">
             </div>
             <div class="form-group">
               <label>Rol</label>
@@ -1335,7 +1330,7 @@ body {
             </div>
             <div class="form-group">
               <label>Biografía corta</label>
-              <textarea>Construyo experiencias digitales para educación y formación interna. Esta sección funciona como mock para validar el layout del perfil.</textarea>
+              <textarea>Construyo experiencias digitales para educación y formación interna.</textarea>
             </div>
           </div>
         </div>
@@ -1445,11 +1440,11 @@ const sessions = [
     desc: 'Lleva tus habilidades SQL al siguiente nivel. Window functions, CTEs recursivas, query plans, índices, y técnicas de optimización para bases de datos PostgreSQL y MySQL.'
   },
   {
-    title: 'Patrones Avanzados en TypeScript',
-    mentor: 'Diego Sánchez', role: 'Tech Lead', avatar: 'DS', gradient: 'gradient-6',
+    title: 'Introducción a React Hooks',
+    mentor: 'Maria Garcia', role: 'Tech Lead', avatar: 'DS', gradient: 'gradient-6',
     tag: 'Frontend', tagClass: 'tag-frontend',
-    date: '27 Mayo 2026, 19:00', duration: '1 hora', spots: 12,
-    desc: 'Explora Generics avanzados, Mapped Types, Conditional Types, Template Literal Types y patrones de diseño type-safe para crear bibliotecas y APIs robustas en TypeScript.'
+    date: '28 Mayo 2026, 18:00', duration: '1 hora', spots: 12,
+    desc: 'Aprende a usar los Hooks más importantes de React: useState, useEffect, useContext, useReducer y custom hooks. Sesión práctica con ejemplos del mundo real y buenas prácticas para aplicaciones modernas.'
   }
 ];
 
